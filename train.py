@@ -108,3 +108,5 @@ print(classification_report(y_test, y_pred))
 
 # Save the trained model
 joblib.dump(mlp, 'loan_approval_model.pkl')
+# Save scaled datat
+joblib.dump(scaler, 'scaled.pkl')
