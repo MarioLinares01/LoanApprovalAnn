@@ -2,9 +2,15 @@
 
 
 import joblib
+import warnings
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from lime.lime_tabular import LimeTabularExplainer
+from dice_ml import Model
+from dice_ml import Dice
+from dice_ml import Data
+from dice_ml.utils import helpers
+warnings.filterwarnings("ignore")
 
 # Load MLP model
 mlp = joblib.load('loan_approval_model.pkl')
@@ -72,4 +78,20 @@ with open('explainer.html', 'w') as f:
 # Print explanation as a list to the terminal
 print(explain.as_list())
 
-# Generating Counterfactuals
+# Transorm dataset to DiCE Data
+X['LoanApproval'] = y
+continuous_features = ['Age', 'AnnualIncome', 'CreditScore', 'LoanAmount', 'LoanDuration', 
+                       'MonthlyDebtPayments', 'NumberOfOpenCreditLines', 'PaymentHistory', 
+                       'LengthOfCreditHistory', 'SavingsAccountBalance', 'CheckingAccountBalance', 
+                       'TotalAssets', 'TotalLiabilities', 'JobTenure', 'NetWorth']
+dice_data = Data(dataframe=X, continuous_features=continuous_features, outcome_name='LoanApproval')
+
+# Create DiCE model
+dice_model = Model(model=mlp, backend='sklearn')
+
+# Create dice explainer
+dice_explain = Dice(dice_data, dice_model, method='random')
+
+dice_counterfactual = dice_explain.generate_counterfactuals(test_one, total_CFs=5, desired_class='opposite', verbose=False)
+
+print(dice_counterfactual.visualize_as_list())
