@@ -41,4 +41,3 @@ test_one_scaled = scaler.transform(test_one)
 # 1: Approved, 0: Not Approved
 prediction = mlp.predict(test_one_scaled)
 print(f"Prediction: {prediction}")
-print(type(prediction))

@@ -66,7 +66,7 @@ X['LoanPurpose'] = X['LoanPurpose'].replace({
     'Other': 4
 })
 
-# Drop some columns
+# Drop columns that will not be used
 X = X.drop(columns='MaritalStatus')
 X = X.drop(columns='HomeOwnershipStatus')
 X = X.drop(columns='NumberOfCreditInquiries')
@@ -108,5 +108,6 @@ print(classification_report(y_test, y_pred))
 
 # Save the trained model
 joblib.dump(mlp, 'loan_approval_model.pkl')
+
 # Save scaled datat
 joblib.dump(scaler, 'scaled.pkl')

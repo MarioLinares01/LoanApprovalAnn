@@ -1,0 +1,21 @@
+Age                        int64
+AnnualIncome               int64
+CreditScore                int64
+EmploymentStatus           int64
+EducationLevel             int64
+Experience                 int64
+LoanAmount                 int64
+LoanDuration               int64
+NumberOfDependents         int64
+MonthlyDebtPayments        int64
+NumberOfOpenCreditLines    int64
+PaymentHistory             int64
+LengthOfCreditHistory      int64
+SavingsAccountBalance      int64
+CheckingAccountBalance     int64
+TotalAssets                int64
+TotalLiabilities           int64
+JobTenure                  int64
+NetWorth                   int64
+
+LoanApproval               int64
