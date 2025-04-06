@@ -29,23 +29,23 @@ X_train = joblib.load('train_data.pkl')
 
 # Test One Input: 
 test_one = pd.DataFrame({
-    'Age': 30,
-    'AnnualIncome': [80000],
+    'Age': [30],
+    'AnnualIncome': [21692],
     'CreditScore': [750],
     'EmploymentStatus': [0],
     'EducationLevel': [2],
     'Experience': [8],
-    'LoanAmount': [15000],
+    'LoanAmount': [33612],
     'LoanDuration': [60],
     'NumberOfDependents': [2],
     'MonthlyDebtPayments': [1200],
     'NumberOfOpenCreditLines': [3],
     'PaymentHistory': [10],
-    'LengthOfCreditHistory': [12],
+    'LengthOfCreditHistory': [29],
     'SavingsAccountBalance': [5000],
     'CheckingAccountBalance': [2000],
     'TotalAssets': [100000],
-    'TotalLiabilities': [30000],
+    'TotalLiabilities': [586278],
     'JobTenure': [5],
     'NetWorth': [70000]
 })
@@ -94,4 +94,7 @@ dice_explain = Dice(dice_data, dice_model, method='random')
 
 dice_counterfactual = dice_explain.generate_counterfactuals(test_one, total_CFs=5, desired_class='opposite', verbose=False)
 
+# Print counterfactuals to the terminal as a list
 print(dice_counterfactual.visualize_as_list())
+
+#print(dice_counterfactual.to_json())
