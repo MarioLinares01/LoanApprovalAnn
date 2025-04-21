@@ -3,9 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" 
+  rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" 
+  crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
   <title>Loan Approval Form</title>
 </head>
 <body>
-  <h1>Form</h>
+  <div class="container mt-5">
+    <h1 class="mb-4">Loan Approval Form</h1>
+    <form action="/result" method="post">
+      <div class="row g-3">
+          <!-- First Column -->
+          <div class="col-md-6">
+              <label for="age" class="form-label">Age</label>
+              <input type="number" class="form-control" name="Age" required>
+
+              <label for="income" class="form-label mt-3">Annual Income</label>
+              <input type="number" class="form-control" name="AnnualIncome" required>
+
+              <label for="creditScore" class="form-label mt-3">Credit Score</label>
+              <input type="number" class="form-control" name="CreditScore" required>
+
+              <label for="employment" class="form-label mt-3">Employment Status</label>
+              <input type="number" class="form-control" name="EmploymentStatus" required>
+
+              <label for="education" class="form-label mt-3">Education Level</label>
+              <input type="number" class="form-control" name="EducationLevel" required>
+
+              <label for="experience" class="form-label mt-3">Experience</label>
+              <input type="number" class="form-control" name="Experience" required>
+
+              <label for="loanAmount" class="form-label mt-3">Loan Amount</label>
+              <input type="number" class="form-control" name="LoanAmount" required>
+
+              <label for="loanDuration" class="form-label mt-3">Loan Duration</label>
+              <input type="number" class="form-control" name="LoanDuration" required>
+
+              <label for="dependents" class="form-label mt-3">Number Of Dependents</label>
+              <input type="number" class="form-control" name="NumberOfDependents" required>
+          </div>
+          <!-- Second Column -->
+          <div class="col-md-6">
+              <label for="monthlyDebt" class="form-label">Monthly Debt Payments</label>
+              <input type="number" class="form-control" name="MonthlyDebtPayments" required>
+
+              <label for="openCreditLines" class="form-label mt-3">Number Of Open Credit Lines</label>
+              <input type="number" class="form-control" name="NumberOfOpenCreditLines" required>
+
+              <label for="paymentHistory" class="form-label mt-3">Payment History</label>
+              <input type="number" class="form-control" name="PaymentHistory" required>
+
+              <label for="creditHistory" class="form-label mt-3">Length Of Credit History</label>
+              <input type="number" class="form-control" name="LengthOfCreditHistory" required>
+
+              <label for="savings" class="form-label mt-3">Savings Account Balance</label>
+              <input type="number" class="form-control" name="SavingsAccountBalance" required>
+
+              <label for="checking" class="form-label mt-3">Checking Account Balance</label>
+              <input type="number" class="form-control" name="CheckingAccountBalance" required>
+
+              <label for="assets" class="form-label mt-3">Total Assets</label>
+              <input type="number" class="form-control" name="TotalAssets" required>
+
+              <label for="liabilities" class="form-label mt-3">Total Liabilities</label>
+              <input type="number" class="form-control" name="TotalLiabilities" required>
+
+              <label for="jobTenure" class="form-label mt-3">Job Tenure</label>
+              <input type="number" class="form-control" name="JobTenure" required>
+
+              <label for="netWorth" class="form-label mt-3">Net Worth</label>
+              <input type="number" class="form-control" name="NetWorth" required>
+          </div>
+      </div>
+      <div class="mt-4">
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+  </form>
+  </div>
 </body>
 </html>
