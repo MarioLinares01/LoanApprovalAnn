@@ -13,19 +13,19 @@ from dice_ml.utils import helpers
 warnings.filterwarnings("ignore")
 
 # Load MLP model
-mlp = joblib.load('loan_approval_model.pkl')
+mlp = joblib.load('model/loan_approval_model.pkl')
 
 # Load scaler
-scaler = joblib.load('scaled.pkl')
+scaler = joblib.load('model/scaled.pkl')
 
 # Load data 
-X = joblib.load('data.pkl')
+X = joblib.load('model/data.pkl')
 
 # Load y
-y = joblib.load('labels.pkl')
+y = joblib.load('model/labels.pkl')
 
 # Load training data
-X_train = joblib.load('train_data.pkl')
+X_train = joblib.load('model/train_data.pkl')
 
 # Test One Input: 
 test_one = pd.DataFrame({
