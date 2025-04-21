@@ -107,16 +107,16 @@ print(f'Accuracy: {accuracy * 100}')
 print(classification_report(y_test, y_pred))
 
 # Save the trained model
-joblib.dump(mlp, 'loan_approval_model.pkl')
+joblib.dump(mlp, 'model/loan_approval_model.pkl')
 
 # Save scaled data
-joblib.dump(scaler, 'scaled.pkl')
+joblib.dump(scaler, 'model/scaled.pkl')
 
 # Save training data
-joblib.dump(X_train, 'train_data.pkl')
+joblib.dump(X_train, 'model/train_data.pkl')
 
 # Save data
-joblib.dump(X, 'data.pkl')
+joblib.dump(X, 'model/data.pkl')
 
 # Save labels
-joblib.dump(y, 'labels.pkl')
+joblib.dump(y, 'model/labels.pkl')
