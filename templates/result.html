@@ -1,11 +1,77 @@
+<!--
+  Prediction: [0]
+  [('AnnualIncome <= -0.67', -0.31188614078123816), ('LoanAmount > 0.43', -0.1285726452336314), ('Experience <= -0.81', -0.049942818463654434), ('CreditScore > 0.75', 0.04092848496035774), ('LengthOfCreditHistory > 0.84', 0.03556203408809586)]
+  100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  3.84it/s]
+
+  Query instance (original outcome : 0)
+  [30, 21692, 750, '0', '2', '8', 33612, 60, '2', 1200, 3, 10, 29, 5000, 2000, 100000, 586278, 5, 70000, 0]
+  Diverse Counterfactual set (new outcome: 1.0)
+  [30, 21692, 750, 0, 2, 8, 33612, 60, 2, 1200, 3, 10, 29, 5000, 2000, 1000933, 586278, 5, 70000, 1]
+  [30, 21692, 750, 0, 2, 8, 33612, 34, 2, 1200, 3, 10, 29, 5000, 2000, 100000, 306473, 5, 70000, 1]
+  [30, 205983, 750, 0, 2, 8, 112189, 60, 2, 1200, 3, 10, 29, 5000, 2000, 100000, 586278, 5, 70000, 1]
+  [30, 21692, 750, 0, 2, 8, 33612, 60, 2, 1200, 3, 10, 29, 5000, 2000, 100000, 229887, 5, 70000, 1]
+  [30, 21692, 750, 0, 2, 8, 33612, 60, 2, 1200, 3, 10, 29, 5000, 2000, 100000, 222381, 9, 70000, 1]
+
+    -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" 
+  rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" 
+  crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
   <title>Document</title>
 </head>
 <body>
-  <h1>Result</h1>
+  <div class="container my-5">
+    <h2 class="mb-4">Original Input</h2>
+    <table class="table table-bordered">
+        <thead class="table-primary">
+        <tr>
+            {% for feature in feature_names %}
+                <th>{{ feature }}</th>
+            {% endfor %}
+            <th>LoanApproval</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            {% for value in test_data %}
+                <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+        </tbody>
+    </table>
+
+    <h2 class="mt-5 mb-4">Counterfactual Suggestions For Future Loan Approval</h2>
+    {% for cf_group in cfs_list %}
+        <table class="table table-striped mb-5">
+            <thead class="table-primary">
+            <tr>
+                {% for feature in feature_names %}
+                    <th>{{ feature }}</th>
+                {% endfor %}
+                <th>LoanApproval</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for cf in cf_group %}
+                <tr>
+                    {% for value in cf %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+
+    <div class="mt-5">
+        <a href="/form" class="btn btn-primary">Submit antother form</a>
+    </div>
+  </div>
 </body>
 </html>

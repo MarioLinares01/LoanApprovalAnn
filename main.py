@@ -12,6 +12,7 @@ from dice_ml import Model
 from dice_ml import Dice
 from dice_ml import Data
 from dice_ml.utils import helpers
+import json
 warnings.filterwarnings("ignore")
 
 app = FastAPI()
@@ -122,5 +123,11 @@ async def result(
     dice_explain = Dice(dice_data, dice_model, method='random')
 
     dice_counterfactual = dice_explain.generate_counterfactuals(input_data, total_CFs=5, desired_class='opposite', verbose=False)
+    output = json.loads(dice_counterfactual.to_json())
 
-    return templates.TemplateResponse("result.html", {"request": request})
+    return templates.TemplateResponse("result.html", {
+        "request": request, 
+        "test_data": output["test_data"][0][0],
+        "feature_names": output["feature_names"],
+        "cfs_list": output["cfs_list"]
+        })
