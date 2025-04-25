@@ -6,6 +6,7 @@ import pandas as pd
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from sklearn.preprocessing import StandardScaler
 from lime.lime_tabular import LimeTabularExplainer
 from dice_ml import Model
@@ -19,6 +20,9 @@ app = FastAPI()
 
 # Set the templates directory
 templates = Jinja2Templates(directory="templates")
+
+# Mount static files
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 async def get_home(request: Request):
@@ -105,8 +109,12 @@ async def result(
     )
 
     # Explain a local prediction
-    row = input_data_sacled[0].reshape(1, -1)
+    row = scaler.inverse_transform(input_data_sacled[0].reshape(1, -1))
     explain = explainer.explain_instance(row[0], mlp.predict_proba, num_features=5)
+
+    # Display explantation as a HTML file
+    with open('static/explainer.html', 'w') as f:
+        f.write(explain.as_html())
 
     # Transorm dataset to DiCE Data
     X['LoanApproval'] = y
