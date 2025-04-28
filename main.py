@@ -104,7 +104,7 @@ async def result(
         training_data=X_train,
         training_labels=y,
         feature_names=X.columns,
-        class_names=['Not Approved', 'Approved'],
+        class_names=['Approved', 'Not Approved'],
         discretize_continuous=True
     )
 
