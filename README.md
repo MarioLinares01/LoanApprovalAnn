@@ -1,5 +1,5 @@
 # LoanApprovalAnn
-A loan approval system that leverages a MLP Classifier, LIME, and Counterfactuals
+A loan approval system that leverages a MLP Classifier, [LIME](https://github.com/marcotcr/lime), and [Dice](https://github.com/interpretml/DiCE/tree/main) Counterfactuals.
 
 ## Live Demo
 https://loanapprovalann.onrender.com
